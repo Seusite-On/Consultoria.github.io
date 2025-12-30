@@ -7,12 +7,12 @@
 
 body {
     background-color: #f4f6f8;
-    color: #333;
+    color: #4c4a4a;
     line-height: 1.6;
 }
 
 header {
-    background-color: #0a3d62;
+    background-color: #401183;
     color: #fff;
     text-align: center;
     padding: 40px 20px;
@@ -36,7 +36,8 @@ section {
 }
 
 h2 {
-    color: #0a3d62;
+    color: #401183;
+
     margin-bottom: 15px;
 }
 
@@ -76,6 +77,6 @@ footer {
     color: #777;
 }
 footer a {
-    color: #0a3d62;
+    color: #8535e1;
     text-decoration: none;
 }
