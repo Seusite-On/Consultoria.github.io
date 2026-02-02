@@ -1,100 +1,79 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Barbearia Estilo Fino</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Fusion Web | InfotecSoft</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>💈 Barbearia Estilo Fino</h1>
-    <p>Corte, estilo e atitude</p>
+    <h1>InfotecSoft <span>• Manual do Sistema Fusion Web</span></h1>
 </header>
 
-<section class="sobre">
-    <h2>Quem Somos</h2>
-    <p>
-        Somos uma barbearia moderna, especializada em cortes masculinos,
-        barba, acabamento premium e planos mensais para nossos clientes.
-    </p>
-</section>
+<div class="container">
+    <nav class="sidebar">
+        <a href="index.html" class="active">🏠 Início</a>
+        <a href="estoque.html">📦 Estoque</a>
+        <a href="comercial.html">💼 Comercial</a>
+        <a href="financeiro.html">💰 Financeiro</a>
+        <a href="ibs-cbs.html">📘 IBS e CBS</a>
+    </nav>
 
-<section class="servicos">
-    <h2>Serviços</h2>
-    <div class="cards">
+    <main class="content">
         <div class="card">
-            <h3>Corte Masculino</h3>
-            <p>R$ 40,00</p>
+            <h2>Bem-vindo ao Fusion Web</h2>
+            <p>
+                Este manual da <strong>InfotecSoft</strong> foi criado para
+                ajudar você a utilizar o sistema <strong>Fusion Web</strong>
+                de forma simples e eficiente.
+            </p>
         </div>
+
         <div class="card">
-            <h3>Barba Completa</h3>
-            <p>R$ 30,00</p>
+            <h2>Vídeo de Apresentação</h2>
+            <div class="video-box">
+                <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" allowfullscreen></iframe>
+            </div>
         </div>
-        <div class="card">
-            <h3>Corte + Barba</h3>
-            <p>R$ 65,00</p>
+
+        <!-- AJUDA -->
+        <div class="help-box">
+            <h3>📞 Precisa de ajuda?</h3>
+            <div class="help-buttons">
+                <a href="https://wa.me/5599999999999" target="_blank" class="btn whatsapp">💬 WhatsApp</a>
+                <a href="#" class="btn ticket">📝 Abrir Chamado</a>
+                <a href="mailto:suporte@infotecsoft.com.br" class="btn email">✉️ Enviar Dúvida</a>
+            </div>
         </div>
+    </main>
+</div>
+
+<footer>© 2026 InfotecSoft • Fusion Web</footer>
+
+<!-- CHAT IA -->
+<script>
+let chatOpen=false;
+function toggleChat(){chatOpen=!chatOpen;document.getElementById("chat-body").style.display=chatOpen?"block":"none";document.getElementById("chat-footer").style.display=chatOpen?"flex":"none";}
+function sendMessage(){const i=document.getElementById("chat-input");const t=i.value.trim();if(!t)return;addMsg(t,"user");i.value="";setTimeout(()=>bot(t),600);}
+function addMsg(t,s){const b=document.getElementById("chat-body");const d=document.createElement("div");d.className="chat-msg "+s;d.innerHTML=t;b.appendChild(d);b.scrollTop=b.scrollHeight;}
+function bot(t){t=t.toLowerCase();let r="Pode explicar melhor sua dúvida? 🙂";
+if(t.includes("nota"))r="A emissão de notas fica no módulo Comercial/Fiscal.";
+if(t.includes("estoque"))r="No módulo Estoque você controla produtos e movimentações.";
+if(t.includes("ibs")||t.includes("cbs"))r="Temos uma página exclusiva sobre IBS e CBS no menu 📘.";
+addMsg(r,"bot");}
+</script>
+
+<div id="chat-ia">
+    <div id="chat-header" onclick="toggleChat()">🤖 Assistente Fusion Web</div>
+    <div id="chat-body">
+        <div class="chat-msg bot">Olá! Como posso ajudar?</div>
     </div>
-</section>
-
-<section class="horarios">
-    <h2>Horários Disponíveis</h2>
-    <ul>
-        <li>🕘 Segunda a Sexta: 09:00 às 19:00</li>
-        <li>🕘 Sábado: 09:00 às 17:00</li>
-        <li>❌ Domingo: Fechado</li>
-    </ul>
-</section>
-
-<section class="planos">
-    <h2>Planos da Barbearia</h2>
-
-    <form class="planos-form">
-        <label class="plano">
-            <input type="radio" name="plano" checked>
-            <div>
-                <h3>Plano Básico</h3>
-                <p>2 cortes por mês</p>
-                <strong>R$ 70,00</strong>
-            </div>
-        </label>
-
-        <label class="plano">
-            <input type="radio" name="plano">
-            <div>
-                <h3>Plano Premium</h3>
-                <p>4 cortes + 2 barbas</p>
-                <strong>R$ 130,00</strong>
-            </div>
-        </label>
-
-        <label class="plano">
-            <input type="radio" name="plano">
-            <div>
-                <h3>Plano VIP</h3>
-                <p>Cortes ilimitados</p>
-                <strong>R$ 200,00</strong>
-            </div>
-        </label>
-    </form>
-</section>
-
-<section class="contato">
-    <h2>Agende pelo WhatsApp</h2>
-    <p>Clique no botão abaixo e fale conosco agora mesmo</p>
-
-    <a class="btn-whats"
-       href="https://wa.me/5564999999999"
-       target="_blank">
-       📲 Falar no WhatsApp
-    </a>
-</section>
-
-<footer>
-    <p>© 2026 Barbearia Estilo Fino - Todos os direitos reservados</p>
-</footer>
+    <div id="chat-footer">
+        <input id="chat-input" placeholder="Digite sua dúvida">
+        <button onclick="sendMessage()">➤</button>
+    </div>
+</div>
 
 </body>
 </html>
