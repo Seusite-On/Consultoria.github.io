@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Central de Ajuda | Fusion Web</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 
 <body>
 
 <header>
   <h1>InfotecSoft <span>• Fusion Web</span></h1>
-  <button id="darkToggle" title="Modo escuro">🌙</button>
+  <button id="darkToggle">🌙</button>
 </header>
 
 <div class="container">
@@ -27,93 +27,120 @@
 </nav>
 
 <main class="content">
-    <div class="help-box">
-  <h3>🤝 Precisa de ajuda?</h3>
-  <p>Escolha uma opção rápida de suporte:</p>
 
-  <div class="help-buttons">
+<h2>Central de Ajuda e Manuais</h2>
+<p>Encontre rapidamente o que você procura sobre o sistema Fusion Web.</p>
 
-    <a href="https://wa.me/5564992738032" target="_blank" class="btn whatsapp">
-      💬 WhatsApp
-    </a>
+<div class="cards">
 
-    <a href="sugestoes.html" class="btn sugestao">
-      💡 Enviar Sugestão
-    </a>
+<a href="estoque.html" class="card">
+<h3>📦 Estoque</h3>
+<p>Produtos, entradas e saídas.</p>
+</a>
 
-    <a href="mailto:suporte@infotecsoft.com.br" class="btn email">
-      📧 Enviar Email
-    </a>
+<a href="comercial.html" class="card">
+<h3>💼 Comercial</h3>
+<p>Vendas e emissão de notas.</p>
+</a>
 
-  </div>
+<a href="financeiro.html" class="card">
+<h3>💰 Financeiro</h3>
+<p>Contas e fluxo de caixa.</p>
+</a>
+
+<a href="rejeicoes.html" class="card">
+<h3>❌ Rejeições</h3>
+<p>Erros de nota fiscal.</p>
+</a>
+
+<a href="ibs-cbs.html" class="card">
+<h3>🧾 IBS e CBS</h3>
+<p>Novo imposto.</p>
+</a>
+
 </div>
 
-  <h2>Central de Ajuda e Manuais</h2>
-  <p>Encontre rapidamente o que você procura sobre o sistema Fusion Web.</p>
+<!-- BLOCO AJUDA -->
+<div class="help-box">
+<h3>🤝 Precisa de ajuda?</h3>
+<p>Escolha uma opção rápida:</p>
 
-  <div class="cards">
+<div class="help-buttons">
+<a href="https://wa.me/5564992738032" target="_blank" class="btn whatsapp">💬 WhatsApp</a>
+<a href="sugestoes.html" class="btn sugestao">💡 Sugestão</a>
+<a href="mailto:suporte@infotecsoft.com.br" class="btn email">📧 Email</a>
+</div>
+</div>
 
-    <a href="estoque.html" class="card">
-      <h3>📦 Estoque</h3>
-      <p>Produtos, entradas, saídas e relatórios.</p>
-    </a>
-
-    <a href="comercial.html" class="card">
-      <h3>💼 Comercial</h3>
-      <p>Vendas, pedidos, orçamentos e notas.</p>
-    </a>
-
-    <a href="financeiro.html" class="card">
-      <h3>💰 Financeiro</h3>
-      <p>Contas a pagar, receber e caixa.</p>
-    </a>
-
-    <a href="rejeicoes.html" class="card">
-      <h3>❌ Rejeições</h3>
-      <p>Erros de nota fiscal.</p>
-    </a>
-
-    <a href="ibs-cbs.html" class="card">
-      <h3>🧾 IBS e CBS</h3>
-      <p>Novo imposto.</p>
-    </a>
-
-    <a href="sugestoes.html" class="card">
-      <h3>💡 Sugestões</h3>
-      <p>Envie melhorias e ideias.</p>
-    </a>
-
-    <a href="https://status.tecnospeed.com.br/" target="_blank" class="card">
-      <h3>🟢 Status SEFAZ</h3>
-      <p>Disponibilidade da SEFAZ.</p>
-    </a>
-
-  </div>
 </main>
-
 </div>
 
-<footer>
-© 2026 InfotecSoft • Fusion Web
-</footer>
+<footer>© 2026 InfotecSoft • Fusion Web</footer>
+
+<!-- ASSISTENTE -->
+<div id="chat-ia">
+<div id="chat-header">💬 Assistente Fusion</div>
+<div id="chat-body">
+<div id="chat-mensagens"></div>
+<input id="chat-input" placeholder="Digite sua dúvida...">
+<button id="chat-enviar">Perguntar</button>
+</div>
+</div>
 
 <script>
-// ===== DARK MODE =====
+// DARK MODE
 const toggle = document.getElementById("darkToggle");
+if(localStorage.getItem("darkMode")==="on"){
+ document.documentElement.classList.add("dark");
+}
+toggle.onclick=()=>{
+ document.documentElement.classList.toggle("dark");
+ localStorage.setItem("darkMode",
+ document.documentElement.classList.contains("dark")?"on":"off");
+};
 
-if (localStorage.getItem("darkMode") === "on") {
-  document.documentElement.classList.add("dark");
+// ASSISTENTE
+document.getElementById("chat-header").onclick=()=>{
+ const body=document.getElementById("chat-body");
+ body.style.display=body.style.display==="flex"?"none":"flex";
+};
+
+const mensagens=document.getElementById("chat-mensagens");
+
+function addMsg(texto,cor="#111"){
+ const div=document.createElement("div");
+ div.style.marginBottom="6px";
+ div.style.color=cor;
+ div.innerHTML=texto;
+ mensagens.appendChild(div);
+ mensagens.scrollTop=mensagens.scrollHeight;
 }
 
-toggle.onclick = () => {
-  document.documentElement.classList.toggle("dark");
-  localStorage.setItem(
-    "darkMode",
-    document.documentElement.classList.contains("dark") ? "on" : "off"
-  );
+document.getElementById("chat-enviar").onclick=()=>{
+ const pergunta=document.getElementById("chat-input").value.toLowerCase();
+ if(!pergunta)return;
+ addMsg("<b>Você:</b> "+pergunta);
+ document.getElementById("chat-input").value="";
+
+ if(pergunta.includes("estoque"))
+ return addMsg("👉 <a href='estoque.html'>Abrir Estoque</a>","#233f99");
+
+ if(pergunta.includes("nota")||pergunta.includes("venda"))
+ return addMsg("👉 <a href='comercial.html'>Abrir Comercial</a>","#233f99");
+
+ if(pergunta.includes("financeiro"))
+ return addMsg("👉 <a href='financeiro.html'>Abrir Financeiro</a>","#233f99");
+
+ if(pergunta.includes("erro"))
+ return addMsg("👉 <a href='rejeicoes.html'>Abrir Rejeições</a>","#233f99");
+
+ if(pergunta.includes("sefaz"))
+ return addMsg("👉 <a href='https://status.tecnospeed.com.br/' target='_blank'>Status SEFAZ</a>","#16a34a");
+
+ addMsg("Não encontrei 😕","red");
+ addMsg("<a href='https://wa.me/5564992738032' target='_blank'>Suporte WhatsApp</a>","#16a34a");
 };
 </script>
-
 
 </body>
 </html>

@@ -27,10 +27,6 @@ header h1 {
   font-weight: 700;
 }
 
-header span {
-  opacity: 0.85;
-}
-
 #darkToggle {
   margin-left: auto;
   background: transparent;
@@ -105,86 +101,17 @@ header span {
   transform: translateY(-6px);
 }
 
-/* FOOTER */
-footer {
-  background: #0f1f4d;
-  color: #dbeafe;
-  text-align: center;
-  padding: 18px;
-}
-
-/* ===== DARK MODE ===== */
-.dark body {
-  background: #0b1220;
-  color: #e5e7eb;
-}
-
-.dark header {
-  background: linear-gradient(90deg, #020617, #1e3a8a);
-}
-
-.dark .sidebar {
-  background: #020617;
-}
-
-.dark .card {
-  background: #111827;
-  border-left: 5px solid #3b82f6;
-}
-
-.dark footer {
-  background: #020617;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    flex-direction: row;
-    overflow-x: auto;
-  }
-
-  .sidebar a {
-    flex: 1;
-    text-align: center;
-    padding: 12px 10px;
-    border-left: none;
-    border-bottom: 3px solid transparent;
-  }
-
-  .sidebar a.active {
-    border-left: none;
-    border-bottom: 3px solid #60a5fa;
-  }
-}
-/* ===== BLOCO AJUDA ===== */
+/* HELP BOX */
 .help-box {
   background: white;
   padding: 25px;
   border-radius: 16px;
   margin-top: 35px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.help-box h3 {
-  color: #233f99;
-  margin-bottom: 5px;
-  font-weight: 700;
-}
-
-.help-box p {
-  opacity: 0.8;
-}
-
-/* BOTÕES */
 .help-buttons {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
   margin-top: 15px;
 }
 
@@ -194,67 +121,79 @@ footer {
   text-decoration: none;
   color: white;
   font-weight: 600;
-  transition: 0.25s;
-  display: inline-block;
-  font-size: 15px;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
-  opacity: 0.95;
+.whatsapp { background: #25d366; }
+.sugestao { background: #f59e0b; }
+.email { background: #3b82f6; }
+
+/* FOOTER */
+footer {
+  background: #0f1f4d;
+  color: #dbeafe;
+  text-align: center;
+  padding: 18px;
 }
 
-/* CORES */
-.whatsapp {
-  background: #25d366;
+/* ASSISTENTE */
+#chat-ia {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  overflow: hidden;
 }
 
-.sugestao {
-  background: #f59e0b;
+#chat-header {
+  background: #233f99;
+  color: white;
+  padding: 14px;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
 }
 
-.email {
-  background: #3b82f6;
+#chat-body {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: #f8fafc;
+  height: 260px;
 }
+
+#chat-input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#chat-enviar {
+  padding: 12px;
+  background: #233f99;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+}
+
+/* DARK MODE */
+.dark body { background: #0b1220; color: #e5e7eb; }
+.dark .sidebar { background: #020617; }
+.dark .card { background: #111827; }
+.dark .help-box { background: #111827; }
+.dark footer { background: #020617; }
+.dark #chat-ia { background: #111827; }
+.dark #chat-body { background: #020617; color: white; }
+.dark #chat-input { background: #1f2937; color: white; border: 1px solid #374151; }
+.dark #chat-header { background: #1e3a8a; }
 
 /* RESPONSIVO */
-@media (max-width: 768px) {
-  .help-buttons {
-    flex-direction: column;
-  }
-
-  .btn {
-    text-align: center;
-  }
-}
-/* ===== DARK MODE AJUDA ===== */
-
-.dark .help-box {
-  background: #111827;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-
-.dark .help-box h3 {
-  color: #60a5fa;
-}
-
-.dark .help-box p {
-  color: #cbd5f5;
-}
-
-/* BOTÕES NO DARK */
-.dark .btn {
-  filter: brightness(0.9);
-}
-
-.dark .whatsapp {
-  background: #16a34a;
-}
-
-.dark .sugestao {
-  background: #d97706;
-}
-
-.dark .email {
-  background: #2563eb;
+@media (max-width:768px){
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; flex-direction: row; overflow-x: auto; }
+  .cards { flex-direction: column; }
+  .help-buttons { flex-direction: column; }
 }
