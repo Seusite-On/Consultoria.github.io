@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sugestões | Fusion Web</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.sugestao-box {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.sugestao-box h2 {
+    color:#1e40af;
+    margin-bottom:10px;
+}
+
+.sugestao-box p {
+    margin-bottom:20px;
+    font-size:15px;
+}
+
+.sugestao-box input,
+.sugestao-box select,
+.sugestao-box textarea {
+    width:100%;
+    padding:14px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    margin-bottom:15px;
+    font-size:15px;
+}
+
+.sugestao-box textarea {
+    height:140px;
+    resize:none;
+}
+
+.sugestao-box button {
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:12px;
+    background:#16a34a;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.sugestao-box button:hover {
+    background:#15803d;
+}
+
+@media(max-width:768px){
+    .sugestao-box {
+        padding:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+    <script src="darkmode.js"></script>
+
+
+<header>
+<h1>InfotecSoft <span>• Fusion Web</span></h1>
+</header>
+
+<div class="container">
+<nav class="sidebar">
+<a href="index.html">🏠 Início</a>
+<a href="estoque.html">📦 Estoque</a>
+<a href="comercial.html">💼 Comercial</a>
+<a href="financeiro.html">💰 Financeiro</a>
+<a href="ibs-cbs.html">📘 IBS e CBS</a>
+<a href="sugestoes.html" class="active">💡 Sugestões</a>
+<a href="https://status.tecnospeed.com.br/" target="_blank">🟢 Status SEFAZ</a>
+</nav>
+
+<main class="content">
+
+<div class="sugestao-box">
+<h2>💡 Enviar Sugestão</h2>
+<p>Ajude-nos a melhorar o Fusion Web! Você pode sugerir melhorias, novos recursos ou vídeos de suporte.</p>
+
+<input type="text" id="empresa" placeholder="Nome da Empresa">
+
+<select id="tipo">
+<option value="">Tipo de Sugestão</option>
+<option>Melhoria no Sistema</option>
+<option>Vídeo de Suporte</option>
+<option>Correção de Erro</option>
+<option>Nova Função</option>
+</select>
+
+<textarea id="mensagem" placeholder="Descreva sua sugestão..."></textarea>
+
+<button onclick="enviarSugestao()">Enviar Sugestão</button>
+
+</div>
+
+</main>
+</div>
+
+<footer>© 2026 InfotecSoft • Fusion Web</footer>
+
+<script>
+function enviarSugestao() {
+    const empresa = document.getElementById("empresa").value.trim();
+    const tipo = document.getElementById("tipo").value;
+    const mensagem = document.getElementById("mensagem").value.trim();
+
+    if(!empresa || !tipo || !mensagem){
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    const texto =
+`Olá, tenho uma sugestão para o Fusion Web:
+
+Empresa: ${empresa}
+Tipo: ${tipo}
+Sugestão: ${mensagem}`;
+
+    window.open("https://wa.me/5564992738032?text=" + encodeURIComponent(texto), "_blank");
+
+    document.getElementById("empresa").value = "";
+    document.getElementById("tipo").value = "";
+    document.getElementById("mensagem").value = "";
+}
+</script>
+
+</body>
+</html>
