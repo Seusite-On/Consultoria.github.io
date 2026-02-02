@@ -4,7 +4,17 @@
 <meta charset="UTF-8">
 <title>Comercial | Fusion Web</title>
 <link rel="stylesheet" href="style.css">
+
+<style>
+.video-box video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -12,6 +22,7 @@
 </header>
 
 <div class="container">
+
 <nav class="sidebar">
 <a href="index.html">🏠 Início</a>
 <a href="estoque.html">📦 Estoque</a>
@@ -21,6 +32,7 @@
 </nav>
 
 <main class="content">
+
 <div class="card">
 <h2>Vendas e Clientes</h2>
 <p>Cadastro de clientes, pedidos, NFC-e e NFe.</p>
@@ -29,12 +41,29 @@
 <div class="card">
 <h2>Vídeo – Emissão de Nota</h2>
 <div class="video-box">
-<iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" allowfullscreen></iframe>
+
+<video controls preload="metadata">
+  <source src="2026-01-16%2014-53-57.mp4" type="video/mp4">
+  Seu navegador não suporta vídeo HTML5.
+</video>
+
 </div>
 </div>
+
+<div class="help-box">
+<h3>Precisa de ajuda?</h3>
+<p>Escolha como deseja entrar em contato:</p>
+<div class="help-buttons">
+<a href="https://wa.me/5564992738032" class="btn whatsapp">WhatsApp</a>
+<a href="#" class="btn ticket">Abrir chamado</a>
+<a href="mailto:suporte@infotecsoft.com.br" class="btn email">Enviar dúvida</a>
+</div>
+</div>
+
 </main>
 </div>
 
 <footer>© 2026 InfotecSoft • Fusion Web</footer>
+
 </body>
 </html>
