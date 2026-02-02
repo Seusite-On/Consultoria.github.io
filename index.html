@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Central de Ajuda | Fusion Web</title>
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 
 <body>
@@ -29,42 +29,17 @@
 <main class="content">
 
 <h2>Central de Ajuda e Manuais</h2>
-<p>Encontre rapidamente o que você procura sobre o sistema Fusion Web.</p>
+<p>Encontre rapidamente o que você procura no Fusion Web.</p>
 
 <div class="cards">
-
-<a href="estoque.html" class="card">
-<h3>📦 Estoque</h3>
-<p>Produtos, entradas e saídas.</p>
-</a>
-
-<a href="comercial.html" class="card">
-<h3>💼 Comercial</h3>
-<p>Vendas e emissão de notas.</p>
-</a>
-
-<a href="financeiro.html" class="card">
-<h3>💰 Financeiro</h3>
-<p>Contas e fluxo de caixa.</p>
-</a>
-
-<a href="rejeicoes.html" class="card">
-<h3>❌ Rejeições</h3>
-<p>Erros de nota fiscal.</p>
-</a>
-
-<a href="ibs-cbs.html" class="card">
-<h3>🧾 IBS e CBS</h3>
-<p>Novo imposto.</p>
-</a>
-
+  <a href="estoque.html" class="card"><h3>📦 Estoque</h3></a>
+  <a href="comercial.html" class="card"><h3>💼 Comercial</h3></a>
+  <a href="financeiro.html" class="card"><h3>💰 Financeiro</h3></a>
+  <a href="rejeicoes.html" class="card"><h3>❌ Rejeições</h3></a>
 </div>
 
-<!-- BLOCO AJUDA -->
 <div class="help-box">
 <h3>🤝 Precisa de ajuda?</h3>
-<p>Escolha uma opção rápida:</p>
-
 <div class="help-buttons">
 <a href="https://wa.me/5564992738032" target="_blank" class="btn whatsapp">💬 WhatsApp</a>
 <a href="sugestoes.html" class="btn sugestao">💡 Sugestão</a>
@@ -80,65 +55,79 @@
 <!-- ASSISTENTE -->
 <div id="chat-ia">
 <div id="chat-header">💬 Assistente Fusion</div>
+
 <div id="chat-body">
 <div id="chat-mensagens"></div>
+
+<div id="chat-sugestoes">
+<button onclick="responder('nota')">🧾 Emitir Nota</button>
+<button onclick="responder('estoque')">📦 Estoque</button>
+<button onclick="responder('financeiro')">💰 Financeiro</button>
+<button onclick="responder('erro')">❌ Erro NF-e</button>
+<button onclick="responder('sefaz')">🟢 Status SEFAZ</button>
+</div>
+
 <input id="chat-input" placeholder="Digite sua dúvida...">
 <button id="chat-enviar">Perguntar</button>
 </div>
 </div>
 
+<style>
+#chat-ia{
+position:fixed;bottom:20px;right:20px;width:320px;
+background:#fff;border-radius:14px;overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,.25);z-index:9999;
+}
+#chat-header{
+background:#233f99;color:#fff;padding:14px;
+cursor:pointer;text-align:center;font-weight:bold;
+}
+#chat-body{display:none;padding:12px;background:#f8fafc;}
+#chat-sugestoes{display:flex;flex-wrap:wrap;gap:8px;}
+#chat-sugestoes button{
+flex:1 1 45%;padding:10px;border:none;border-radius:10px;
+background:#233f99;color:white;cursor:pointer;
+}
+#chat-input{width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #ccc;}
+#chat-enviar{width:100%;margin-top:6px;padding:10px;background:#233f99;color:#fff;border:none;border-radius:8px;}
+.dark #chat-ia{background:#111827;}
+.dark #chat-body{background:#020617;color:white;}
+.dark #chat-sugestoes button{background:#1e3a8a;}
+</style>
+
 <script>
 // DARK MODE
-const toggle = document.getElementById("darkToggle");
+const toggle=document.getElementById("darkToggle");
 if(localStorage.getItem("darkMode")==="on"){
- document.documentElement.classList.add("dark");
+document.documentElement.classList.add("dark");
 }
 toggle.onclick=()=>{
- document.documentElement.classList.toggle("dark");
- localStorage.setItem("darkMode",
- document.documentElement.classList.contains("dark")?"on":"off");
+document.documentElement.classList.toggle("dark");
+localStorage.setItem("darkMode",
+document.documentElement.classList.contains("dark")?"on":"off");
 };
 
 // ASSISTENTE
 document.getElementById("chat-header").onclick=()=>{
- const body=document.getElementById("chat-body");
- body.style.display=body.style.display==="flex"?"none":"flex";
+const body=document.getElementById("chat-body");
+body.style.display=body.style.display==="block"?"none":"block";
 };
 
-const mensagens=document.getElementById("chat-mensagens");
-
-function addMsg(texto,cor="#111"){
- const div=document.createElement("div");
- div.style.marginBottom="6px";
- div.style.color=cor;
- div.innerHTML=texto;
- mensagens.appendChild(div);
- mensagens.scrollTop=mensagens.scrollHeight;
+function responder(p){
+document.getElementById("chat-input").value=p;
+document.getElementById("chat-enviar").click();
 }
 
 document.getElementById("chat-enviar").onclick=()=>{
- const pergunta=document.getElementById("chat-input").value.toLowerCase();
- if(!pergunta)return;
- addMsg("<b>Você:</b> "+pergunta);
- document.getElementById("chat-input").value="";
+const pergunta=document.getElementById("chat-input").value.toLowerCase();
+if(!pergunta)return;
 
- if(pergunta.includes("estoque"))
- return addMsg("👉 <a href='estoque.html'>Abrir Estoque</a>","#233f99");
-
- if(pergunta.includes("nota")||pergunta.includes("venda"))
- return addMsg("👉 <a href='comercial.html'>Abrir Comercial</a>","#233f99");
-
- if(pergunta.includes("financeiro"))
- return addMsg("👉 <a href='financeiro.html'>Abrir Financeiro</a>","#233f99");
-
- if(pergunta.includes("erro"))
- return addMsg("👉 <a href='rejeicoes.html'>Abrir Rejeições</a>","#233f99");
-
- if(pergunta.includes("sefaz"))
- return addMsg("👉 <a href='https://status.tecnospeed.com.br/' target='_blank'>Status SEFAZ</a>","#16a34a");
-
- addMsg("Não encontrei 😕","red");
- addMsg("<a href='https://wa.me/5564992738032' target='_blank'>Suporte WhatsApp</a>","#16a34a");
+if(pergunta.includes("estoque"))window.location="estoque.html";
+else if(pergunta.includes("nota"))window.location="comercial.html";
+else if(pergunta.includes("financeiro"))window.location="financeiro.html";
+else if(pergunta.includes("erro"))window.location="rejeicoes.html";
+else if(pergunta.includes("sefaz"))window.open("https://status.tecnospeed.com.br/");
+else window.open("https://wa.me/5564992738032");
 };
 </script>
 
