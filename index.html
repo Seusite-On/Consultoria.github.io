@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Manual Fusion Web | InfotecSoft</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Central de Ajuda | Fusion Web</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* Apenas ajustes específicos do index */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+.card {
+    flex: 1 1 250px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: inherit;
+    transition: .3s;
+    cursor: pointer;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+.card h3 { color:#1e40af; margin-bottom:10px; }
+.card p { font-size:14px; }
+</style>
 </head>
+
 <body>
 
 <header>
-    <h1>InfotecSoft <span>• Manual do Sistema Fusion Web</span></h1>
+    <h1>InfotecSoft <span>• Fusion Web</span></h1>
 </header>
 
 <div class="container">
@@ -21,29 +47,43 @@
     </nav>
 
     <main class="content">
-        <div class="card">
-            <h2>Bem-vindo ao Fusion Web</h2>
-            <p>
-                Este manual da <strong>InfotecSoft</strong> foi criado para
-                ajudar você a utilizar o sistema <strong>Fusion Web</strong>
-                de forma simples e eficiente.
-            </p>
+        <h2>Central de Ajuda e Manuais</h2>
+        <p>Encontre rapidamente o que você procura sobre o sistema Fusion Web.</p>
+
+        <div class="cards">
+            <a href="estoque.html" class="card">
+                <h3>📦 Estoque</h3>
+                <p>Produtos, entradas, saídas e relatórios detalhados.</p>
+            </a>
+
+            <a href="comercial.html" class="card">
+                <h3>💼 Comercial</h3>
+                <p>Vendas, pedidos, orçamentos e emissão de notas.</p>
+            </a>
+
+            <a href="financeiro.html" class="card">
+                <h3>💰 Financeiro</h3>
+                <p>Contas a pagar, receber, fluxo de caixa e relatórios.</p>
+            </a>
+
+            <a href="rejeicoes.html" class="card">
+                <h3>❌ Rejeições</h3>
+                <p>Erros de nota fiscal e como resolver rapidamente.</p>
+            </a>
+
+            <a href="ibs-cbs.html" class="card">
+                <h3>🧾 IBS e CBS</h3>
+                <p>Entenda o novo imposto e como ele impacta seu sistema.</p>
+            </a>
         </div>
 
-        <div class="card">
-            <h2>Vídeo de Apresentação</h2>
-            <div class="video-box">
-                <iframe src="https://www.youtube.com/embed/SEU_VIDEO_AQUI" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- AJUDA -->
         <div class="help-box">
-            <h3>📞 Precisa de ajuda?</h3>
+            <h3>Precisa de ajuda?</h3>
+            <p>Escolha como deseja entrar em contato com nosso suporte:</p>
             <div class="help-buttons">
-                <a href="https://wa.me/5599999999999" target="_blank" class="btn whatsapp">💬 WhatsApp</a>
-                <a href="#" class="btn ticket">📝 Abrir Chamado</a>
-                <a href="mailto:suporte@infotecsoft.com.br" class="btn email">✉️ Enviar Dúvida</a>
+                <a href="https://wa.me/5564992738032" class="btn whatsapp">WhatsApp</a>
+                <a href="#" class="btn ticket">Abrir chamado</a>
+                <a href="mailto:suporte@infotecsoft.com.br" class="btn email">Enviar dúvida</a>
             </div>
         </div>
     </main>
@@ -51,29 +91,53 @@
 
 <footer>© 2026 InfotecSoft • Fusion Web</footer>
 
-<!-- CHAT IA -->
-<script>
-let chatOpen=false;
-function toggleChat(){chatOpen=!chatOpen;document.getElementById("chat-body").style.display=chatOpen?"block":"none";document.getElementById("chat-footer").style.display=chatOpen?"flex":"none";}
-function sendMessage(){const i=document.getElementById("chat-input");const t=i.value.trim();if(!t)return;addMsg(t,"user");i.value="";setTimeout(()=>bot(t),600);}
-function addMsg(t,s){const b=document.getElementById("chat-body");const d=document.createElement("div");d.className="chat-msg "+s;d.innerHTML=t;b.appendChild(d);b.scrollTop=b.scrollHeight;}
-function bot(t){t=t.toLowerCase();let r="Pode explicar melhor sua dúvida? 🙂";
-if(t.includes("nota"))r="A emissão de notas fica no módulo Comercial/Fiscal.";
-if(t.includes("estoque"))r="No módulo Estoque você controla produtos e movimentações.";
-if(t.includes("ibs")||t.includes("cbs"))r="Temos uma página exclusiva sobre IBS e CBS no menu 📘.";
-addMsg(r,"bot");}
-</script>
-
+<!-- CHAT FLUTUANTE -->
 <div id="chat-ia">
-    <div id="chat-header" onclick="toggleChat()">🤖 Assistente Fusion Web</div>
-    <div id="chat-body">
-        <div class="chat-msg bot">Olá! Como posso ajudar?</div>
-    </div>
-    <div id="chat-footer">
-        <input id="chat-input" placeholder="Digite sua dúvida">
-        <button onclick="sendMessage()">➤</button>
+    <div id="chat-header">💬 Precisa de ajuda?</div>
+    <div id="chat-body" style="display:flex; flex-direction:column; gap:8px; padding:12px; background:#f8fafc; height:260px; overflow-y:auto;">
+        <input id="chat-empresa" type="text" placeholder="Nome da empresa" style="padding:10px; border-radius:8px; border:1px solid #ccc;">
+        <textarea id="chat-duvida" placeholder="Descreva sua dúvida" style="padding:10px; border-radius:8px; border:1px solid #ccc; resize:none; height:100px;"></textarea>
+        <button id="chat-enviar" style="padding:12px; background:#16a34a; color:#fff; border:none; border-radius:10px; cursor:pointer;">Enviar WhatsApp</button>
     </div>
 </div>
+
+<script>
+// ===== CHAT FLUTUANTE =====
+const chatIa = document.getElementById("chat-ia");
+const chatHeader = document.getElementById("chat-header");
+chatIa.style.position = "fixed";
+chatIa.style.bottom = "20px";
+chatIa.style.right = "20px";
+chatIa.style.width = "320px";
+chatIa.style.borderRadius = "14px";
+chatIa.style.boxShadow = "0 15px 40px rgba(0,0,0,0.25)";
+chatIa.style.zIndex = 9999;
+chatIa.style.display = "flex";
+chatIa.style.flexDirection = "column";
+chatIa.style.background = "#fff";
+chatIa.style.overflow = "hidden";
+
+// Toggle chat body
+chatHeader.onclick = () => {
+    const body = document.getElementById("chat-body");
+    body.style.display = body.style.display === "none" ? "flex" : "none";
+};
+
+// Enviar mensagem para WhatsApp
+document.getElementById("chat-enviar").onclick = () => {
+    const empresa = document.getElementById("chat-empresa").value.trim();
+    const duvida = document.getElementById("chat-duvida").value.trim();
+    if(!empresa || !duvida) { alert("Preencha nome da empresa e a dúvida!"); return; }
+
+    const mensagem = `Olá, preciso de ajuda no Fusion Web.\n\nEmpresa: ${empresa}\nDúvida: ${duvida}`;
+    window.open("https://wa.me/5564992738032?text=" + encodeURIComponent(mensagem), "_blank");
+
+    // Limpar campos
+    document.getElementById("chat-empresa").value = "";
+    document.getElementById("chat-duvida").value = "";
+    document.getElementById("chat-body").style.display = "none";
+};
+</script>
 
 </body>
 </html>
