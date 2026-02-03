@@ -1,14 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rejeições | Fusion Web</title>
+<link rel="stylesheet" href="style.css?v=10">
 </head>
-<body>
-    <script src="darkmode.js"></script>
 
-    <p>Rejeição de Nota Fiscal</p>
-    <p>Este é um exemplo de página de rejeição de nota fiscal.</p>
+<body>
+
+<header>
+  <h1>InfotecSoft <span>• Fusion Web</span></h1>
+  <button id="darkToggle">🌙</button>
+</header>
+
+<div class="container">
+
+<nav class="sidebar">
+  <a href="index.html">🏠 Início</a>
+  <a href="estoque.html">📦 Estoque</a>
+  <a href="comercial.html">💼 Comercial</a>
+  <a href="financeiro.html">💰 Financeiro</a>
+  <a href="ibs-cbs.html">📘 IBS e CBS</a>
+  <a href="sugestoes.html">💡 Sugestões</a>
+  <a href="rejeicoes.html" class="active">❌ Rejeições</a>
+<a href="https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?versao=0.00&tipoConteudo=P2c98tUpxrI=&AspxAutoDetectCookieSupport=1" target="_blank">🟢 Status SEFAZ</a>
+
+</nav>
+
+<main class="content">
+
+<h2>Rejeições Mais Comuns NF-e / NFC-e</h2>
+<p>Veja o erro e como resolver rapidamente.</p>
+
+<div class="cards-rej">
+
+<div class="card-rej">
+<h3>204 – Duplicidade de NF-e</h3>
+<p>Nota já autorizada.</p>
+<span>Consulte a chave na SEFAZ e não reenviar.</span>
+</div>
+
+<div class="card-rej">
+<h3>539 – Duplicidade Diferença</h3>
+<p>Mesma chave com dados diferentes.</p>
+<span>Alterar número ou série.</span>
+</div>
+
+<div class="card-rej">
+<h3>302 – Uso Denegado</h3>
+<p>CNPJ irregular.</p>
+<span>Regularizar situação fiscal.</span>
+</div>
+
+<div class="card-rej">
+<h3>999 – Erro SEFAZ</h3>
+<p>Instabilidade.</p>
+<span>Aguardar alguns minutos.</span>
+</div>
+
+<div class="card-rej">
+<h3>656 – Consumo Indevido</h3>
+<p>Muitas consultas seguidas.</p>
+<span>Esperar 5 a 10 minutos.</span>
+</div>
+
+</div>
+
+</main>
+</div>
+
+<footer>© 2026 InfotecSoft • Fusion Web</footer>
+
+<script>
+// DARK MODE (igual index)
+const toggle=document.getElementById("darkToggle");
+if(localStorage.getItem("darkMode")==="on"){
+document.documentElement.classList.add("dark");
+}
+toggle.onclick=()=>{
+document.documentElement.classList.toggle("dark");
+localStorage.setItem("darkMode",
+document.documentElement.classList.contains("dark")?"on":"off");
+};
+</script>
+
 </body>
 </html>
