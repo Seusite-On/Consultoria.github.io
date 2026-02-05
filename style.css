@@ -379,4 +379,79 @@ body{
   }
 
 }
+/* ========================= */
+/* MOBILE BONITO / GRANDE    */
+/* ========================= */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  /* TÍTULOS */
+  h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  /* CONTAINERS */
+  .container, .content, main {
+    width: 100%;
+    padding: 15px;
+  }
+
+  /* CARDS / BLOCOS */
+  .card, .box, .bloco {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+
+  /* BOTÕES */
+  button, .btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  /* INPUTS */
+  input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    border-radius: 8px;
+  }
+
+  /* MENU */
+  nav, .menu {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* IMAGENS */
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  /* ESPAÇAMENTO GERAL */
+  section {
+    margin-bottom: 20px;
+  }
+
+}
+
 
