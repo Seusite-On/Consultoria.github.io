@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Central de Ajuda | Fusion Web</title>
-<link rel="stylesheet" href="style.css?v=10">
+
+<link rel="stylesheet" href="style.css">
+<script src="darkmode.js" defer></script>
 </head>
 
 <body>
@@ -16,27 +18,34 @@
 
 <div class="container">
 
+<!-- SIDEBAR -->
 <nav class="sidebar">
-  <a href="index.html" class="active">🏠 Início</a>
-  <a href="estoque.html">📦 Estoque</a>
-  <a href="comercial.html">💼 Comercial</a>
-  <a href="financeiro.html">💰 Financeiro</a>
-  <a href="ibs-cbs.html">📘 IBS e CBS</a>
-  <a href="sugestoes.html">💡 Sugestões</a>
-  <a href="rejeicoes.html">❌ Rejeições</a>
-  <a href="https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?versao=0.00&tipoConteudo=P2c98tUpxrI=&AspxAutoDetectCookieSupport=1" target="_blank">🟢 Status SEFAZ</a>
+<a href="index.html" class="active">🏠 Início</a>
+<a href="estoque.html">📦 Estoque</a>
+<a href="comercial.html">💼 Comercial</a>
+<a href="financeiro.html">💰 Financeiro</a>
+<a href="participantes.html">👥 Participantes</a>
+<a href="balanca.html">⚖️ Balança</a>
+<a href="ibs-cbs.html">📘 IBS e CBS</a>
+<a href="sugestoes.html">💡 Sugestões</a>
+<a href="rejeicoes.html">❌ Rejeições</a>
+<a href="atualizacoes.html">🆕 Atualizações</a>
 </nav>
 
+<!-- CONTEÚDO -->
 <main class="content">
 
 <h2>Central de Ajuda e Manuais</h2>
 <p>Encontre rapidamente o que você procura no Fusion Web.</p>
 
 <div class="cards">
-  <a href="estoque.html" class="card"><h3>📦 Estoque</h3></a>
-  <a href="comercial.html" class="card"><h3>💼 Comercial</h3></a>
-  <a href="financeiro.html" class="card"><h3>💰 Financeiro</h3></a>
-  <a href="rejeicoes.html" class="card"><h3>❌ Rejeições</h3></a>
+<a href="estoque.html" class="card">📦 Estoque</a>
+<a href="comercial.html" class="card">💼 Comercial</a>
+<a href="financeiro.html" class="card">💰 Financeiro</a>
+<a href="participantes.html" class="card">👥 Participantes</a>
+<a href="balanca.html" class="card">⚖️ Balança</a>
+<a href="rejeicoes.html" class="card">❌ Rejeições</a>
+<a href="atualizacoes.html" class="card">🆕 Atualizações</a>
 </div>
 
 <div class="help-box">
@@ -48,89 +57,12 @@
 </div>
 </div>
 
+
 </main>
 </div>
+<div id="toast">Bem-vindo ao Fusion Web 🚀</div>
 
 <footer>© 2026 InfotecSoft • Fusion Web</footer>
-
-<!-- ASSISTENTE -->
-<div id="chat-ia">
-<div id="chat-header">💬 Assistente Fusion</div>
-
-<div id="chat-body">
-<div id="chat-mensagens"></div>
-
-<div id="chat-sugestoes">
-<button onclick="responder('nota')">🧾 Emitir Nota</button>
-<button onclick="responder('estoque')">📦 Estoque</button>
-<button onclick="responder('financeiro')">💰 Financeiro</button>
-<button onclick="responder('erro')">❌ Erro NF-e</button>
-<button onclick="responder('sefaz')">🟢 Status SEFAZ</button>
-</div>
-
-<input id="chat-input" placeholder="Digite sua dúvida...">
-<button id="chat-enviar">Perguntar</button>
-</div>
-</div>
-
-<style>
-#chat-ia{
-position:fixed;bottom:20px;right:20px;width:320px;
-background:#fff;border-radius:14px;overflow:hidden;
-box-shadow:0 15px 40px rgba(0,0,0,.25);z-index:9999;
-}
-#chat-header{
-background:#233f99;color:#fff;padding:14px;
-cursor:pointer;text-align:center;font-weight:bold;
-}
-#chat-body{display:none;padding:12px;background:#f8fafc;}
-#chat-sugestoes{display:flex;flex-wrap:wrap;gap:8px;}
-#chat-sugestoes button{
-flex:1 1 45%;padding:10px;border:none;border-radius:10px;
-background:#233f99;color:white;cursor:pointer;
-}
-#chat-input{width:100%;margin-top:8px;padding:10px;border-radius:8px;border:1px solid #ccc;}
-#chat-enviar{width:100%;margin-top:6px;padding:10px;background:#233f99;color:#fff;border:none;border-radius:8px;}
-.dark #chat-ia{background:#111827;}
-.dark #chat-body{background:#020617;color:white;}
-.dark #chat-sugestoes button{background:#1e3a8a;}
-</style>
-
-<script>
-// DARK MODE
-const toggle=document.getElementById("darkToggle");
-if(localStorage.getItem("darkMode")==="on"){
-document.documentElement.classList.add("dark");
-}
-toggle.onclick=()=>{
-document.documentElement.classList.toggle("dark");
-localStorage.setItem("darkMode",
-document.documentElement.classList.contains("dark")?"on":"off");
-};
-
-// ASSISTENTE
-document.getElementById("chat-header").onclick=()=>{
-const body=document.getElementById("chat-body");
-body.style.display=body.style.display==="block"?"none":"block";
-};
-
-function responder(p){
-document.getElementById("chat-input").value=p;
-document.getElementById("chat-enviar").click();
-}
-
-document.getElementById("chat-enviar").onclick=()=>{
-const pergunta=document.getElementById("chat-input").value.toLowerCase();
-if(!pergunta)return;
-
-if(pergunta.includes("estoque"))window.location="estoque.html";
-else if(pergunta.includes("nota"))window.location="comercial.html";
-else if(pergunta.includes("financeiro"))window.location="financeiro.html";
-else if(pergunta.includes("erro"))window.location="rejeicoes.html";
-else if(pergunta.includes("sefaz"))window.open("https://www.nfe.fazenda.gov.br/portal/disponibilidade.aspx?versao=0.00&tipoConteudo=P2c98tUpxrI=&AspxAutoDetectCookieSupport=1");
-else window.open("https://wa.me/5564992738032");
-};
-</script>
 
 </body>
 </html>
