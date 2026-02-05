@@ -188,13 +188,13 @@ h2::after{
 }
 
 .card-rej h3{
-  color:#475569;
+  color:#:#233f;
   margin-bottom:6px;
 }
 
 .card-rej span{
   font-size:13px;
-  color:#475569;
+  color:#:#233f;
 }
 
 /* FOOTER */
@@ -354,4 +354,5 @@ footer{
   }
 
 }
+
 
