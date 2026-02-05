@@ -314,3 +314,69 @@ body{
   transform:scale(.96);
 }
 
+/* ========================= */
+/* RESPONSIVO GERAL CELULAR  */
+/* ========================= */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* Containers gerais */
+  .container,
+  .content,
+  .wrapper,
+  main {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Títulos */
+  h1, h2, h3 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  /* Menus */
+  nav, .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Cards / Caixas */
+  .card, .box, .bloco {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* Botões */
+  button, .btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  /* Inputs */
+  input, select, textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  /* Tabelas */
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  /* Imagens e vídeos */
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+}
+
